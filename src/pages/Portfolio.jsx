@@ -51,33 +51,15 @@ const Portfolio = () => {
           zIndex={10}
           pt={4}
           pb={3}
+          gap={8}
         >
-          <Tab
-            p={0}
-            pr={8}
-            pl={2}
-            _selected={{ color: "primary.500" }}
-            fontSize={"22px"}
-            variant="defaultTab"
-          >
+          <Tab p={0} pl={2} fontSize={"22px"}>
             Code
           </Tab>
-          <Tab
-            p={0}
-            pr={8}
-            _selected={{ color: "primary.500" }}
-            fontSize={"22px"}
-            variant="defaultTab"
-          >
+          <Tab p={0} fontSize={"22px"}>
             UI/UX
           </Tab>
-          <Tab
-            p={0}
-            pr={8}
-            _selected={{ color: "primary.500" }}
-            fontSize={"22px"}
-            variant="defaultTab"
-          >
+          <Tab p={0} fontSize={"22px"}>
             Photography
           </Tab>
         </TabList>

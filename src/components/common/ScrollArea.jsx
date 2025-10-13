@@ -80,15 +80,11 @@ const ScrollArea = ({
             ref={containerRef}
             overflowX="auto"
             scrollSnapType="x mandatory"
-            css={{
-              "&::-webkit-scrollbar": { display: "none" },
-              scrollbarWidth: "none",
-            }}
             width="100%"
             borderWidth={"1px"}
             borderColor="secondary.200"
             shadow="sm"
-            variant="hover"
+            className="hoverable-small"
           >
             {items.map((child, i) => (
               <Box

@@ -29,13 +29,13 @@ const Header = () => {
       <Image
         src={`${process.env.PUBLIC_URL}/logo/logo-ab.svg`}
         alt="Ashlynn Braisted"
-        variant="hover"
+        className="hoverable"
         boxSize="40px"
         onClick={() => navigate("/")}
       />
 
       <Tabs
-        index={currentIndex >= 0 ? currentIndex : -1} // <-- -1 means no tab selected
+        index={currentIndex >= 0 ? currentIndex : -1}
         onChange={(index) => navigate(links[index].path)}
         variant="unstyled"
         size="lg"
@@ -47,7 +47,6 @@ const Header = () => {
               key={link.path}
               _selected={{ color: "white", bg: "primary.500" }}
               height={"40px"}
-              variant="defaultTab"
             >
               {link.name}
             </Tab>

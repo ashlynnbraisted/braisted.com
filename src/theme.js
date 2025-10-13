@@ -1,7 +1,10 @@
 // theme.js
 import { extendTheme } from "@chakra-ui/react";
+import { tabsAnatomy } from "@chakra-ui/anatomy";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 
-const defaultHover = (scaleSize = 1.1, styles = {}) => ({
+// Default hover helper
+export const defaultHover = (scaleSize = 1.1, styles = {}) => ({
   transform: `scale(${scaleSize})`,
   transition: "all 0.2s ease-in-out",
   ...styles,
@@ -24,6 +27,20 @@ const theme = extendTheme({
       "input, textarea, button, a, p, span, div": {
         cursor: "none !important",
       },
+      ".hoverable": {
+        transition: "all 0.2s ease-in-out",
+        "&:hover": {
+          transform: "scale(1.1)",
+        },
+      },
+      ".hoverable-small": {
+        transition: "all 0.2s ease-in-out",
+        "&:hover": {
+          transform: "scale(1.01)",
+        },
+      },
+      "&::-webkit-scrollbar": { display: "none" },
+      scrollbarWidth: "none",
     },
   },
   colors: {
@@ -61,33 +78,23 @@ const theme = extendTheme({
     Button: {
       baseStyle: {
         borderRadius: "none",
-        _hover: {
-          ...defaultHover(),
-        },
+        _hover: defaultHover(),
       },
       variants: {
         outline: {
-          _hover: {
-            ...defaultHover(),
-            bg: "transparent",
-          },
+          _hover: { ...defaultHover(), bg: "transparent" },
           borderColor: "primary.500",
           color: "primary.500",
           _disabled: {
             color: "secondary.500",
             borderColor: "secondary.500",
             cursor: "not-allowed",
-            _hover: {
-              transform: "none",
-            },
+            _hover: { transform: "none" },
           },
         },
         ghost: {
           _active: { bg: "transparent" },
-          _hover: {
-            ...defaultHover(),
-            bg: "transparent",
-          },
+          _hover: { ...defaultHover(), bg: "transparent" },
         },
       },
     },
@@ -103,27 +110,19 @@ const theme = extendTheme({
         _active: { bg: "transparent" },
       },
     },
-    Tab: {
-      variants: {
-        defaultTab: {
+    Tabs: (() => {
+      const { definePartsStyle, defineMultiStyleConfig } =
+        createMultiStyleConfigHelpers(tabsAnatomy.keys);
+
+      const baseStyle = definePartsStyle({
+        tab: {
           _hover: defaultHover(),
+          _selected: { color: "primary.500" },
         },
-      },
-    },
-    Image: {
-      variants: {
-        hover: {
-          _hover: defaultHover(),
-        },
-      },
-    },
-    Flex: {
-      variants: {
-        hover: {
-          _hover: defaultHover(1.01),
-        },
-      },
-    },
+      });
+
+      return defineMultiStyleConfig({ baseStyle });
+    })(),
   },
 });
 

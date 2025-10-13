@@ -5,7 +5,7 @@ const BadgeList = ({ badges }) => {
   return (
     <Flex wrap="wrap">
       {badges.map((badge) => (
-        <Badge key={badge} m={1} variant="outline" color="primary.500">
+        <Badge key={badge} m={1} variant="outline">
           {badge}
         </Badge>
       ))}

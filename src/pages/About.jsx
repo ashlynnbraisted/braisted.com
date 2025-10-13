@@ -1,6 +1,6 @@
-import { Box, Image, Flex, Link, Text } from "@chakra-ui/react";
+import { Box, IconButton, Image, Flex, Link, Text } from "@chakra-ui/react";
 import { Typewriter } from "../components";
-import { GrMailOption, GrLinkedinOption } from "react-icons/gr";
+import { GrMailOption, GrLinkedinOption, GrGithub } from "react-icons/gr";
 import { useEffect, useRef, useState } from "react";
 
 // A wrapper that expands width if vertical overflow occurs
@@ -48,19 +48,18 @@ const About = () => {
       >
         {/* Fixed header area */}
         <Box flexShrink={0}>
-          <Typewriter text="Ashlynn Braisted" repeating={false} mb={6} />
+          <Typewriter text="Ashlynn Braisted" repeating={false} mb={2} />
+          <Text fontSize={24} mb={6}>
+            <span className="bold">Software Engineer </span>
+          </Text>
         </Box>
 
         {/* Scrollable content */}
         <Box overflowY="auto" flexGrow={1} pr={2}>
           <Text mb={6}>
-            is a <span className="bold">Software Engineer</span> with a passion
-            for human-centered design and fun web creations!
-          </Text>
-
-          <Text mb={6}>
-            I recently graduated from Northeastern University with a
-            <span className="bold"> BS </span> in
+            I'm a detail-oriented web developer with a passion for creating
+            human-centered, interactive experiences. I recently graduated from
+            Northeastern University with a<span className="bold"> BS </span> in
             <span className="bold">
               {" "}
               Computer Science and Interaction Design
@@ -119,27 +118,37 @@ const About = () => {
               </Link>
             </Text>
           </Box>
-          <Flex flexDirection="row" gap={3} justifyContent="flex-start">
-            <Box
-              as="a"
-              href="https://www.linkedin.com/in/ashlynnbraisted/"
-              target="_blank"
-              rel="noopener noreferrer"
-              cursor="pointer"
-              _hover={{ transform: "scale(1.05)" }}
+          <Flex flexDirection="row" justifyContent="flex-start">
+            <IconButton
+              aria-label="LinkedIn"
+              icon={<GrLinkedinOption size={25} />}
+              onClick={() =>
+                window.open(
+                  "https://www.linkedin.com/in/ashlynnbraisted/",
+                  "_blank"
+                )
+              }
+              variant="ghost"
               color="primary.500"
-            >
-              <GrLinkedinOption size={25} />
-            </Box>
-            <Box
-              as="a"
-              href="mailto:ashlynnbraisted@gmail.com"
-              cursor="pointer"
-              _hover={{ transform: "scale(1.05)" }}
+            />
+            <IconButton
+              aria-label="Email"
+              icon={<GrMailOption size={26} />}
+              onClick={() =>
+                (window.location.href = "mailto:ashlynnbraisted@gmail.com")
+              }
+              variant="ghost"
               color="primary.500"
-            >
-              <GrMailOption size={26} />
-            </Box>
+            />
+            <IconButton
+              aria-label="GitHub"
+              icon={<GrGithub size={26} />}
+              onClick={() =>
+                window.open("https://github.com/ashlynnbraisted", "_blank")
+              }
+              variant="ghost"
+              color="primary.500"
+            />
           </Flex>
         </Box>
       </ExpandingBox>

@@ -1,5 +1,5 @@
-import { Image, Link } from "@chakra-ui/react";
-import { PortfolioCard } from "../../components";
+import { Image } from "@chakra-ui/react";
+import { PortfolioCard } from "..";
 
 // A display of my work on Swap
 const Swap = (props) => (
@@ -15,20 +15,15 @@ const Swap = (props) => (
       />,
       <Image src={`${process.env.PUBLIC_URL}/swap-ads.jpg`} alt="Swap Ads" />,
     ]}
+    buttons={[
+      {
+        type: "figma",
+        href: "https://www.figma.com/design/t9yJfdGes4qnykWObiqJpa/Swap-Capstone?node-id=293-751",
+      },
+    ]}
     description={[
       "For my Senior Capstone, I designed a high-fidelity prototype for Swap, an e-commerce platform that lets users exchange goods within their community instead of buying and selling.",
       "Alongside the prototype, I developed a component library for the site and created an ad campaign for the New York City subway.",
-      <>
-        You can view the Figma prototype for Swap{" "}
-        <Link
-          color="primary.500"
-          isExternal
-          href="https://www.figma.com/design/t9yJfdGes4qnykWObiqJpa/Swap-Capstone?node-id=293-751"
-        >
-          here
-        </Link>
-        .
-      </>,
     ]}
     {...props}
   />

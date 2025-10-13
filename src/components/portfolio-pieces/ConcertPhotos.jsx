@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Box, Flex, Text, IconButton, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Text, useDisclosure } from "@chakra-ui/react";
 import { BsShuffle } from "react-icons/bs";
-import concertList from "../../concertList.json";
-import { Image, MediaModal } from "../../components";
+import { concertList } from "../../data";
+import { Image, MediaModal } from "..";
 
 // A display of photos from public/concerts
 const ConcertPhotos = () => {
@@ -39,16 +39,13 @@ const ConcertPhotos = () => {
         {/* Shuffle Button */}
         <Flex width="10%" alignItems="flex-start">
           <IconButton
+            icon={<BsShuffle size={30} />}
             aria-label="Shuffle Photos"
-            icon={<BsShuffle />}
             onClick={handleShuffle}
-            color="primary.500"
-            fontSize={40}
             variant="ghost"
-            _hover={{ transform: "scale(1.05)" }}
+            color="primary.500"
             position="fixed"
-            ml={2}
-          />
+          ></IconButton>
         </Flex>
 
         {/* Photo Grid */}
@@ -70,17 +67,9 @@ const ConcertPhotos = () => {
               breakInside="avoid"
               position="relative"
               overflow="hidden"
-              cursor="pointer"
               onClick={() => handleClick(p)}
             >
-              <Image
-                src={p.src}
-                alt={p.artist}
-                width="100%"
-                display="block"
-                transition="transform 0.3s"
-                _hover={{ transform: "scale(1.05)" }}
-              />
+              <Image src={p.src} alt={p.artist} width="100%" display="block" />
               <Box
                 position="absolute"
                 top={0}

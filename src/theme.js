@@ -1,7 +1,31 @@
 // theme.js
 import { extendTheme } from "@chakra-ui/react";
 
+const defaultHover = (scaleSize = 1.1, styles = {}) => ({
+  transform: `scale(${scaleSize})`,
+  transition: "all 0.2s ease-in-out",
+  ...styles,
+});
+
 const theme = extendTheme({
+  styles: {
+    global: {
+      "*": {
+        fontFamily: `"Teachers", sans-serif`,
+        cursor: "none !important",
+      },
+      ".bold": {
+        fontWeight: 500,
+        color: "black",
+      },
+      "html, body": {
+        overscrollBehaviorY: "none",
+      },
+      "input, textarea, button, a, p, span, div": {
+        cursor: "none !important",
+      },
+    },
+  },
   colors: {
     primary: {
       50: "#e8edfb",
@@ -32,6 +56,72 @@ const theme = extendTheme({
     Text: {
       baseStyle: {
         color: "secondary.800",
+      },
+    },
+    Button: {
+      baseStyle: {
+        borderRadius: "none",
+        _hover: {
+          ...defaultHover(),
+        },
+      },
+      variants: {
+        outline: {
+          _hover: {
+            ...defaultHover(),
+            bg: "transparent",
+          },
+          borderColor: "primary.500",
+          color: "primary.500",
+          _disabled: {
+            color: "secondary.500",
+            borderColor: "secondary.500",
+            cursor: "not-allowed",
+            _hover: {
+              transform: "none",
+            },
+          },
+        },
+        ghost: {
+          _active: { bg: "transparent" },
+          _hover: {
+            ...defaultHover(),
+            bg: "transparent",
+          },
+        },
+      },
+    },
+    Badge: {
+      baseStyle: {
+        borderRadius: "none",
+        color: "primary.500",
+      },
+    },
+    IconButton: {
+      baseStyle: {
+        _hover: defaultHover(),
+        _active: { bg: "transparent" },
+      },
+    },
+    Tab: {
+      variants: {
+        defaultTab: {
+          _hover: defaultHover(),
+        },
+      },
+    },
+    Image: {
+      variants: {
+        hover: {
+          _hover: defaultHover(),
+        },
+      },
+    },
+    Flex: {
+      variants: {
+        hover: {
+          _hover: defaultHover(1.01),
+        },
       },
     },
   },

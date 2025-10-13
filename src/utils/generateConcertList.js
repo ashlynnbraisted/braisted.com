@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const dir = path.join(process.cwd(), "public/concert");
+const dir = path.join(process.cwd(), "../../public/concert");
 
 // Makes strings readable, e.g. "MotherMother" → "Mother Mother"
 const humanize = (str = "") =>
@@ -30,7 +30,7 @@ const files = fs
   .map(parseFilename);
 
 fs.writeFileSync(
-  "./src/concertList.json",
+  "../data/concertList.json",
   JSON.stringify(files, null, 2),
   "utf-8"
 );

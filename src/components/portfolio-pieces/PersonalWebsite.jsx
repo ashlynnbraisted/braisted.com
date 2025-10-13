@@ -1,5 +1,4 @@
-import { Link } from "@chakra-ui/react";
-import { Image, PortfolioCard } from "../../components";
+import { Image, PortfolioCard } from "..";
 
 // A display of my Personal Website
 const PersonalWebsite = (props) => {
@@ -15,20 +14,15 @@ const PersonalWebsite = (props) => {
           fit="contain"
         />,
       ]}
+      buttons={[
+        {
+          type: "code",
+          href: "https://github.com/ashlynnbraisted/braisted.com",
+        },
+      ]}
       description={[
         "You're on it right now!",
         "I designed and developed this website as both a creative space and a personal portfolio. The codebase is built for reusability, making it easy to add new projects as I create them.",
-        <>
-          You can view the repository{" "}
-          <Link
-            color="primary.500"
-            isExternal
-            href="https://github.com/ashlynnbraisted/braisted.com"
-          >
-            here
-          </Link>
-          .
-        </>,
       ]}
       {...props}
     />

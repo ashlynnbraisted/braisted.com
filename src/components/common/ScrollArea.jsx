@@ -1,14 +1,14 @@
 import {
   AspectRatio,
   Flex,
+  Button,
   Box,
   HStack,
-  IconButton,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef, useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import MediaModal from "./MediaModal";
+import { MediaModal } from "..";
 
 // A scrollable media carousel
 const ScrollArea = ({
@@ -65,15 +65,15 @@ const ScrollArea = ({
       <Box {...props}>
         <Flex alignItems="center">
           {/* Left arrow */}
-          <IconButton
+          <Button
             aria-label="Scroll left"
-            icon={<FaChevronLeft />}
             onClick={() => scrollByPage(-1)}
-            right={3}
             variant="ghost"
-            color="secondary.500"
+            color="secondary.400"
             visibility={page > 0 ? "visible" : "hidden"}
-          />
+          >
+            <FaChevronLeft size={20} />
+          </Button>
 
           {/* Media display */}
           <Flex
@@ -87,6 +87,8 @@ const ScrollArea = ({
             width="100%"
             borderWidth={"1px"}
             borderColor="secondary.200"
+            shadow="sm"
+            variant="hover"
           >
             {items.map((child, i) => (
               <Box
@@ -94,7 +96,6 @@ const ScrollArea = ({
                 flexShrink={0}
                 scrollSnapAlign="start"
                 flex="0 0 100.5%"
-                cursor="pointer"
                 onClick={() => handleMediaClick(child)}
               >
                 {aspectRatio ? (
@@ -120,15 +121,15 @@ const ScrollArea = ({
           </Flex>
 
           {/* Right arrow */}
-          <IconButton
+          <Button
             aria-label="Scroll right"
-            icon={<FaChevronRight />}
             onClick={() => scrollByPage(1)}
-            left={3}
             variant="ghost"
-            color="secondary.500"
+            color="secondary.400"
             visibility={page < items.length - 1 ? "visible" : "hidden"}
-          />
+          >
+            <FaChevronRight size={20} />
+          </Button>
         </Flex>
 
         {/* Dots below media */}

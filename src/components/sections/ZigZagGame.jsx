@@ -107,7 +107,6 @@ const ZigzagGame = ({ ...props }) => {
       width={pathWidth + 45 + "px"}
       height="75px"
       position="relative"
-      cursor="grab"
       userSelect="none"
       mx="auto"
       mt={6}

@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
 
 import { useEffect } from "react";
-import concertList from "./concertList.json";
-import { Header, Footer } from "./components";
+import { concertList } from "./data";
+import { CustomCursor, Header, Footer } from "./components";
 import { Home, Portfolio, Resume, About } from "./pages";
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
 
   return (
     <Router>
+      <CustomCursor />
       <Box
         px={75}
         minHeight="100vh"

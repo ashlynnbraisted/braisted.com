@@ -1,12 +1,3 @@
-export { default as FadeIn } from "./FadeIn";
-export { default as Header } from "./Header";
-export { default as ScrollingBanner } from "./ScrollingBanner";
-export { default as Typewriter } from "./Typewriter";
-export { default as BadgeList } from "./BadgeList";
-export { default as ZigZagGame } from "./ZigZagGame";
-export { default as ScrollArea } from "./ScrollArea";
-export { default as Footer } from "./Footer";
-export { default as PortfolioCard } from "./PortfolioCard";
-export { default as Video } from "./Video";
-export { default as Image } from "./Image";
-export { default as MediaModal } from "./MediaModal";
+export * from "./common";
+export * from "./portfolio-pieces";
+export * from "./sections";

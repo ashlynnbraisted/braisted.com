@@ -10,14 +10,16 @@ import {
 import {
   ConcertPhotos,
   Priceline,
+  CoveyPhoto,
   Ribbles,
   RSI,
   Swap,
   Kanbas,
   ImageProcessor,
   CacophonyCrossing,
+  PersonalMediaJournal,
   PersonalWebsite,
-} from "./portfolio-pieces";
+} from "../components/portfolio-pieces";
 import { Typewriter } from "../components";
 
 // The "Portfolio" tab
@@ -56,6 +58,7 @@ const Portfolio = () => {
             pl={2}
             _selected={{ color: "primary.500" }}
             fontSize={"22px"}
+            variant="defaultTab"
           >
             Code
           </Tab>
@@ -64,6 +67,7 @@ const Portfolio = () => {
             pr={8}
             _selected={{ color: "primary.500" }}
             fontSize={"22px"}
+            variant="defaultTab"
           >
             UI/UX
           </Tab>
@@ -72,6 +76,7 @@ const Portfolio = () => {
             pr={8}
             _selected={{ color: "primary.500" }}
             fontSize={"22px"}
+            variant="defaultTab"
           >
             Photography
           </Tab>
@@ -84,9 +89,11 @@ const Portfolio = () => {
               ))} */}
               <Priceline />
               <Kanbas />
+              <CoveyPhoto />
               <ImageProcessor />
               <CacophonyCrossing />
               <Ribbles />
+              <PersonalMediaJournal />
               <PersonalWebsite />
             </VStack>
           </TabPanel>

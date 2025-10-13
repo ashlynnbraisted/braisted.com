@@ -7,8 +7,7 @@ import {
   Box,
   Text,
 } from "@chakra-ui/react";
-import Video from "./Video";
-import Image from "./Image";
+import { Image, Video } from "..";
 
 // A popup modal for media that is clicked on
 const MediaModal = ({ isOpen, onClose, src, title, subtitle }) => {

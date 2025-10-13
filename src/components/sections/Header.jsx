@@ -29,7 +29,7 @@ const Header = () => {
       <Image
         src={`${process.env.PUBLIC_URL}/logo/logo-ab.svg`}
         alt="Ashlynn Braisted"
-        cursor="pointer"
+        variant="hover"
         boxSize="40px"
         onClick={() => navigate("/")}
       />
@@ -47,6 +47,7 @@ const Header = () => {
               key={link.path}
               _selected={{ color: "white", bg: "primary.500" }}
               height={"40px"}
+              variant="defaultTab"
             >
               {link.name}
             </Tab>

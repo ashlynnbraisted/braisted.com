@@ -1,5 +1,5 @@
-import { PortfolioCard } from "../../components";
 import { Image, Link } from "@chakra-ui/react";
+import { PortfolioCard } from "..";
 
 const RSI = (props) => {
   return (

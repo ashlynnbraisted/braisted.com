@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const dir = path.join(process.cwd(), "../../public/concert");
+const dir = path.join(process.cwd(), "../../public/portfolio/concert");
 
 // Makes strings readable, e.g. "MotherMother" → "Mother Mother"
 const humanize = (str = "") =>
@@ -17,7 +17,7 @@ const parseFilename = (filename) => {
   const [artist, venue = ""] = cleaned.split("_");
 
   return {
-    src: `/concert/${filename}`,
+    src: `/portfolio/concert/${filename}`,
     artist: humanize(artist),
     venue: humanize(venue),
   };

@@ -7,20 +7,14 @@ import {
   TabPanels,
   VStack,
 } from "@chakra-ui/react";
-import {
-  ConcertPhotos,
-  Priceline,
-  CoveyPhoto,
-  Ribbles,
-  RSI,
-  Swap,
-  Kanbas,
-  ImageProcessor,
-  CacophonyCrossing,
-  PersonalMediaJournal,
-  PersonalWebsite,
-} from "../components/portfolio-pieces";
-import { Typewriter } from "../components";
+import { ConcertPhotos, PortfolioCard, Typewriter } from "../components";
+import { portfolioData } from "../data";
+
+const categories = [
+  { key: "code", label: "Code" },
+  { key: "uiux", label: "UI/UX" },
+  { key: "photography", label: "Photography" },
+];
 
 // The "Portfolio" tab
 const Portfolio = () => {
@@ -51,46 +45,32 @@ const Portfolio = () => {
           zIndex={10}
           pt={4}
           pb={3}
+          pl={2}
           gap={8}
         >
-          <Tab p={0} pl={2} fontSize={"22px"}>
-            Code
-          </Tab>
-          <Tab p={0} fontSize={"22px"}>
-            UI/UX
-          </Tab>
-          <Tab p={0} fontSize={"22px"}>
-            Photography
-          </Tab>
+          {categories.map((cat) => (
+            <Tab key={cat.key} p={0} fontSize="22px">
+              {cat.label}
+            </Tab>
+          ))}
         </TabList>
+
         <TabPanels>
-          <TabPanel>
-            <VStack spacing={6} mb={5}>
-              {/* {[Priceline, Ribbles].map((CardComp, i) => (
-                <CardComp key={i} reverseLayout={i % 2 === 1} />
-              ))} */}
-              <Priceline />
-              <Kanbas />
-              <CoveyPhoto />
-              <ImageProcessor />
-              <CacophonyCrossing />
-              <Ribbles />
-              <PersonalMediaJournal />
-              <PersonalWebsite />
-            </VStack>
-          </TabPanel>
-          <TabPanel>
-            <VStack spacing={6} mb={5}>
-              {/* {[Swap].map((CardComp, i) => (
-                <CardComp key={i} reverseLayout={i % 2 === 1} />
-              ))} */}
-              <Swap />
-              <RSI />
-            </VStack>
-          </TabPanel>
-          <TabPanel>
-            <ConcertPhotos />
-          </TabPanel>
+          {categories.map((cat) => (
+            <TabPanel key={cat.key}>
+              <VStack spacing={6} mb={5}>
+                {cat.key === "photography" ? (
+                  <ConcertPhotos />
+                ) : (
+                  Object.values(portfolioData)
+                    .filter((p) => p.category === cat.key)
+                    .map((project, i) => (
+                      <PortfolioCard key={i} project={project} />
+                    ))
+                )}
+              </VStack>
+            </TabPanel>
+          ))}
         </TabPanels>
       </Tabs>
     </Box>

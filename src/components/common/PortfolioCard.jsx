@@ -1,25 +1,39 @@
 import { Card, Flex, Text } from "@chakra-ui/react";
-import { BadgeList, ButtonList, ScrollArea, ScrollText } from "..";
+import {
+  BadgeList,
+  ButtonList,
+  Image,
+  ScrollArea,
+  ScrollText,
+  Video,
+} from "..";
 
 // A Portfolio card component
 const PortfolioCard = ({
-  title,
-  subtitle,
-  badges,
-  media,
-  description,
+  project,
   reverseLayout = false,
   aspectRatio = 16 / 9,
   ...props
 }) => {
-  // Image/video section
+  if (!project) return null;
+
+  const { title, subtitle, badges, description, media, buttons } = project;
+
+  const mediaElements = media.map((item, i) => {
+    if (item.type === "video") {
+      return <Video key={i} {...item} />;
+    }
+    return <Image key={i} {...item} />;
+  });
+
+  // Media section
   const MediaSection = (
     <ScrollArea width="65%" height="100%" aspectRatio={aspectRatio}>
-      {media}
+      {mediaElements}
     </ScrollArea>
   );
 
-  // Text, badges, and buttons
+  // Text section
   const TextSection = (
     <Flex maxWidth="30%" flexDirection="column" maxHeight="100%">
       {title && (
@@ -39,7 +53,7 @@ const PortfolioCard = ({
       )}
       {badges && <BadgeList badges={badges} mt={2} />}
       {description && <ScrollText lines={description} mt={4} mb={6} />}
-      {props.buttons && <ButtonList buttons={props.buttons} />}
+      {buttons && <ButtonList buttons={buttons} />}
     </Flex>
   );
 

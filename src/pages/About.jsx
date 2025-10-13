@@ -2,6 +2,7 @@ import { Box, IconButton, Image, Flex, Link, Text } from "@chakra-ui/react";
 import { Typewriter } from "../components";
 import { GrMailOption, GrLinkedinOption, GrGithub } from "react-icons/gr";
 import { useEffect, useRef, useState } from "react";
+import { aboutData } from "../data";
 
 // A wrapper that expands width if vertical overflow occurs
 const ExpandingBox = ({
@@ -15,7 +16,6 @@ const ExpandingBox = ({
 
   useEffect(() => {
     const el = ref.current;
-
     const checkOverflow = () => {
       if (!el) return;
       setWidth(
@@ -24,7 +24,6 @@ const ExpandingBox = ({
           : baseWidth
       );
     };
-
     checkOverflow();
     window.addEventListener("resize", checkOverflow);
     return () => window.removeEventListener("resize", checkOverflow);
@@ -38,6 +37,8 @@ const ExpandingBox = ({
 };
 
 const About = () => {
+  const { name, role, intro, publications, links } = aboutData;
+
   return (
     <Flex>
       <ExpandingBox
@@ -48,110 +49,57 @@ const About = () => {
       >
         {/* Fixed header area */}
         <Box flexShrink={0}>
-          <Typewriter text="Ashlynn Braisted" repeating={false} mb={2} />
+          <Typewriter text={name} repeating={false} mb={2} />
           <Text fontSize={24} mb={6}>
-            <span className="bold">Software Engineer </span>
+            <span className="bold">{role}</span>
           </Text>
         </Box>
 
         {/* Scrollable content */}
         <Box overflowY="auto" flexGrow={1} pr={2}>
-          <Text mb={6}>
-            I'm a detail-oriented web developer with a passion for creating
-            human-centered, interactive experiences. I recently graduated from
-            Northeastern University with a<span className="bold"> BS </span> in
-            <span className="bold">
-              {" "}
-              Computer Science and Interaction Design
-            </span>
-            . During my studies, I completed two 6-month full-time Web
-            Development positions, led a mentorship program teaching
-            foundational coding skills to middle school girls as president of
-            Girls Who Code, and photographed concerts for <i>
-              Tastemakers
-            </i>{" "}
-            magazine.
-          </Text>
-
-          <Text mb={6}>
-            Outside of work, I love to hike, crochet, and play <i>Catan</i>.
-            Take a look around to see some of my work, including this site,
-            which I designed and built from scratch!
-          </Text>
+          {intro.map((paragraph, i) => (
+            <Text key={i} mb={6}>
+              {paragraph}
+            </Text>
+          ))}
 
           <Box mb={6}>
             <Text fontWeight={500}>Publications</Text>
-            <Text>
-              <Link
-                color="primary.500"
-                isExternal
-                href="https://voca.network/blog/2022/07/06/a-conversation-with-kerry-tribe-exploring-cognizance-and-interaction/"
-              >
-                A Conversation With Kerry Tribe
-              </Link>
-            </Text>
-            <Text>
-              <Link
-                color="primary.500"
-                isExternal
-                href="https://www.tastemakersmag.com/issue/issue-65-cmamm"
-              >
-                TMM Issue 65, Pg. 32
-              </Link>
-            </Text>
-            <Text>
-              <Link
-                color="primary.500"
-                isExternal
-                href="https://www.tastemakersmag.com/issue/issue68-ba46l"
-              >
-                TMM Issue 68, Pg. 23, 44
-              </Link>
-            </Text>
-            <Text>
-              <Link
-                color="primary.500"
-                isExternal
-                href="https://www.tastemakersmag.com/photos?offset=1634058300879&reversePaginate=true&author=678fde4809c59c4443712fbe"
-              >
-                TMM Online
-              </Link>
-            </Text>
+            {publications.map((pub, i) => (
+              <Text key={i}>
+                <Link color="primary.500" isExternal href={pub.href}>
+                  {pub.label}
+                </Link>
+              </Text>
+            ))}
           </Box>
+
           <Flex flexDirection="row" justifyContent="flex-start">
             <IconButton
               aria-label="LinkedIn"
               icon={<GrLinkedinOption size={25} />}
-              onClick={() =>
-                window.open(
-                  "https://www.linkedin.com/in/ashlynnbraisted/",
-                  "_blank"
-                )
-              }
+              onClick={() => window.open(links.linkedin, "_blank")}
               variant="ghost"
               color="primary.500"
             />
             <IconButton
               aria-label="Email"
               icon={<GrMailOption size={26} />}
-              onClick={() =>
-                (window.location.href = "mailto:ashlynnbraisted@gmail.com")
-              }
+              onClick={() => (window.location.href = `mailto:${links.email}`)}
               variant="ghost"
               color="primary.500"
             />
             <IconButton
               aria-label="GitHub"
               icon={<GrGithub size={26} />}
-              onClick={() =>
-                window.open("https://github.com/ashlynnbraisted", "_blank")
-              }
+              onClick={() => window.open(links.github, "_blank")}
               variant="ghost"
               color="primary.500"
             />
           </Flex>
         </Box>
       </ExpandingBox>
+
       <Image
         src={`${process.env.PUBLIC_URL}/logo/logo-transparent.svg`}
         right={0}

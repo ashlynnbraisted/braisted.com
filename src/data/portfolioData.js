@@ -44,8 +44,8 @@ const portfolioData = {
       "Node.js",
       "Express.js",
       "MongoDB",
-      "Netlify",
       "Render",
+      "Netlify",
     ],
     media: [
       {
@@ -342,6 +342,29 @@ const portfolioData = {
     description: [
       "For my Senior Capstone, I designed a high-fidelity prototype for Swap, an e-commerce platform that lets users exchange goods within their community instead of buying and selling.",
       "Alongside the prototype, I developed a component library for the site and created an ad campaign for the New York City subway.",
+    ],
+  },
+  cookbook: {
+    category: "uiux",
+    title: "CookBook",
+    subtitle: "AI Grocery & Cooking Assistant App",
+    badges: ["Figma"],
+    media: [
+      {
+        type: "image",
+        src: `${process.env.PUBLIC_URL}/portfolio/cookbook-mockup.png`,
+        alt: "CookBook",
+      },
+    ],
+    buttons: [
+      {
+        type: "figma",
+        href: "https://www.figma.com/proto/FM2ekiDuqMBaCxBs8NilMO/High-Fidelity-Prototype?page-id=17%3A4&node-id=182-21714&viewport=768%2C576%2C0.2&t=OZzh0LJCpjv6nrTp-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=182%3A21714",
+      },
+    ],
+    description: [
+      "A high-fidelity Figma prototype designed to simplify grocery shopping and cooking by helping users plan meals, manage ingredients, and explore recipes.",
+      "The project included conducting focus groups, Wizard of Oz testing, timed usability studies, and over ten interviews to optimize usability. I designed interactive screens for the home and pantry, schedule, AI chat, recipe explorer, and user profile, ensuring a cohesive and intuitive user experience.",
     ],
   },
   rsi: {

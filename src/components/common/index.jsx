@@ -1,5 +1,4 @@
 export { default as ScrollingBanner } from "./ScrollingBanner";
-export { default as Typewriter } from "./Typewriter";
 export { default as BadgeList } from "./BadgeList";
 export { default as ButtonList } from "./ButtonList";
 export { default as ScrollText } from "./ScrollText";

@@ -64,7 +64,6 @@ const PortfolioCard = ({
       alignItems="center"
       justifyContent="space-evenly"
       height={575}
-      width="90%"
       variant="outline"
       gap={10}
       p={6}

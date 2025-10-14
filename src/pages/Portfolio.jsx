@@ -7,7 +7,12 @@ import {
   TabPanels,
   VStack,
 } from "@chakra-ui/react";
-import { ConcertPhotos, PortfolioCard, Typewriter } from "../components";
+import {
+  ConcertPhotos,
+  FadeIn,
+  PortfolioCard,
+  Typewriter,
+} from "../components";
 import { portfolioData } from "../data";
 
 const categories = [
@@ -65,7 +70,9 @@ const Portfolio = () => {
                   Object.values(portfolioData)
                     .filter((p) => p.category === cat.key)
                     .map((project, i) => (
-                      <PortfolioCard key={i} project={project} />
+                      <FadeIn key={i} width="90%">
+                        <PortfolioCard key={i} project={project} />
+                      </FadeIn>
                     ))
                 )}
               </VStack>

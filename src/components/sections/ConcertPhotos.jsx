@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, Flex, IconButton, Text, useDisclosure } from "@chakra-ui/react";
 import { BsShuffle } from "react-icons/bs";
 import { concertList } from "../../data";
-import { Image, MediaModal } from "..";
+import { FadeIn, Image, MediaModal } from "..";
 
 // A display of photos from public/concerts
 const ConcertPhotos = () => {
@@ -58,45 +58,52 @@ const ConcertPhotos = () => {
           }}
         >
           {photos.map((p, i) => (
-            <Box
-              key={i}
-              as="figure"
-              display="inline-block"
-              width="100%"
-              margin="0 0 1rem"
-              breakInside="avoid"
-              position="relative"
-              overflow="hidden"
-              onClick={() => handleClick(p)}
-            >
-              <Image src={p.src} alt={p.artist} width="100%" display="block" />
+            <FadeIn key={i} rise={false}>
               <Box
-                position="absolute"
-                top={0}
-                left={0}
+                key={i}
+                as="figure"
+                display="inline-block"
                 width="100%"
-                height="100%"
-                bg="rgba(0,0,0,0.5)"
-                opacity={0}
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-                textAlign="center"
-                transition="opacity 0.3s"
-                _hover={{ opacity: 1 }}
-                px={2}
+                margin="0 0 1rem"
+                breakInside="avoid"
+                position="relative"
+                overflow="hidden"
+                onClick={() => handleClick(p)}
               >
-                <Text color="white" fontSize="lg" fontWeight="600">
-                  {p.artist}
-                </Text>
-                {p.venue && (
-                  <Text fontSize="sm" color="white">
-                    {p.venue}
+                <Image
+                  src={p.src}
+                  alt={p.artist}
+                  width="100%"
+                  display="block"
+                />
+                <Box
+                  position="absolute"
+                  top={0}
+                  left={0}
+                  width="100%"
+                  height="100%"
+                  bg="rgba(0,0,0,0.5)"
+                  opacity={0}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  alignItems="center"
+                  textAlign="center"
+                  transition="opacity 0.3s"
+                  _hover={{ opacity: 1 }}
+                  px={2}
+                >
+                  <Text color="white" fontSize="lg" fontWeight="600">
+                    {p.artist}
                   </Text>
-                )}
+                  {p.venue && (
+                    <Text fontSize="sm" color="white">
+                      {p.venue}
+                    </Text>
+                  )}
+                </Box>
               </Box>
-            </Box>
+            </FadeIn>
           ))}
         </div>
 

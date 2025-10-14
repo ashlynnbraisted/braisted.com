@@ -12,9 +12,8 @@ const Header = () => {
     { name: "About", path: "/about" },
   ];
 
-  const currentIndex = links.findIndex(
-    (link) => link.path === location.pathname
-  );
+  const path = location.pathname.replace(/\/+$/, "");
+  const currentIndex = links.findIndex((link) => link.path === path);
 
   return (
     <Flex
@@ -35,7 +34,7 @@ const Header = () => {
       />
 
       <Tabs
-        index={currentIndex >= 0 ? currentIndex : -1}
+        index={currentIndex}
         onChange={(index) => navigate(links[index].path)}
         variant="unstyled"
         size="lg"

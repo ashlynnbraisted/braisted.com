@@ -57,8 +57,8 @@ const ConcertPhotos = () => {
             margin: "0 auto",
           }}
         >
-          {photos.map((p, i) => (
-            <FadeIn key={i} rise={false}>
+          <FadeIn>
+            {photos.map((p, i) => (
               <Box
                 key={i}
                 as="figure"
@@ -103,8 +103,8 @@ const ConcertPhotos = () => {
                   )}
                 </Box>
               </Box>
-            </FadeIn>
-          ))}
+            ))}
+          </FadeIn>
         </div>
 
         <Box width="10%"></Box>

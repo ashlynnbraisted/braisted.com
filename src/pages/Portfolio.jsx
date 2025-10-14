@@ -42,7 +42,11 @@ const Portfolio = () => {
       />
 
       {/*A set of tabs to sort portfolio work */}
-      <Tabs variant="unstyled" size="lg">
+      <Tabs
+        variant="unstyled"
+        size="lg"
+        onChange={() => window.scrollTo({ top: 0 })}
+      >
         <TabList
           position="sticky"
           top="17vh"
@@ -63,21 +67,19 @@ const Portfolio = () => {
         <TabPanels>
           {categories.map((cat) => (
             <TabPanel key={cat.key}>
-              <Box overflowY="auto" maxHeight="70vh">
-                <VStack spacing={6} mb={5}>
-                  {cat.key === "photography" ? (
-                    <ConcertPhotos />
-                  ) : (
-                    Object.values(portfolioData)
-                      .filter((p) => p.category === cat.key)
-                      .map((project, i) => (
-                        <FadeIn key={i} width="90%">
-                          <PortfolioCard key={i} project={project} />
-                        </FadeIn>
-                      ))
-                  )}
-                </VStack>
-              </Box>
+              <VStack spacing={6} mb={5}>
+                {cat.key === "photography" ? (
+                  <ConcertPhotos />
+                ) : (
+                  Object.values(portfolioData)
+                    .filter((p) => p.category === cat.key)
+                    .map((project, i) => (
+                      <FadeIn key={i} width="90%">
+                        <PortfolioCard key={i} project={project} />
+                      </FadeIn>
+                    ))
+                )}
+              </VStack>
             </TabPanel>
           ))}
         </TabPanels>

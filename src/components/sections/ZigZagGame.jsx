@@ -7,7 +7,7 @@ import { BsStars } from "react-icons/bs";
 // A game where the user must drag a rocket across a zigzag line
 const ZigzagGame = ({ ...props }) => {
   const svgRef = useRef(null);
-  const [position, setPosition] = useState({ x: 0, y: 25 });
+  const [position, setPosition] = useState({ x: 0, y: 25, angle: 0 });
   const [dragging, setDragging] = useState(false);
   const [finished, setFinished] = useState(false);
   const [pathD, setPathD] = useState("");
@@ -16,7 +16,7 @@ const ZigzagGame = ({ ...props }) => {
 
   const navigate = useNavigate();
 
-  // Generates a random path
+  // Generates a random path and sets initial rocket orientation
   useEffect(() => {
     const width = 200 + Math.random() * 100;
     const height = 75;
@@ -26,6 +26,7 @@ const ZigzagGame = ({ ...props }) => {
 
     let path = `M0,${height / 2}`;
     let lastPoint = { x: 0, y: height / 2 };
+    let firstSegmentPoint = null;
 
     for (let i = 1; i <= segments; i++) {
       const x = i * segmentWidth;
@@ -36,13 +37,24 @@ const ZigzagGame = ({ ...props }) => {
         y = height - (10 + Math.random() * 10); // downward
       }
       path += ` L${x},${y}`;
+
+      if (i === 1) {
+        // save the first segment for angle calculation
+        firstSegmentPoint = { x, y };
+      }
+
       lastPoint = { x, y };
     }
+
+    // Now calculate initial angle
+    const dx = firstSegmentPoint.x - 0;
+    const dy = firstSegmentPoint.y - height / 2;
+    const initialAngle = (Math.atan2(dy, dx) * 180) / Math.PI;
 
     setPathD(path);
     setPathWidth(width);
     setEndPoint(lastPoint);
-    setPosition({ x: 0, y: height / 2 });
+    setPosition({ x: 0, y: height / 2, angle: initialAngle });
   }, []);
 
   // Start dragging (mouse or touch)

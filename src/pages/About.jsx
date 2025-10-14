@@ -1,6 +1,7 @@
 import { Box, IconButton, Image, Flex, Link, Text } from "@chakra-ui/react";
 import { Typewriter, FadeIn } from "../components";
-import { GrMailOption, GrLinkedinOption, GrGithub } from "react-icons/gr";
+import { GrLinkedinOption, GrGithub } from "react-icons/gr";
+import { IoMailSharp } from "react-icons/io5";
 import { useEffect, useRef, useState } from "react";
 import { aboutData } from "../data";
 
@@ -38,7 +39,7 @@ const ExpandingBox = ({
 
 const About = () => {
   const { name, role, intro, publications, links } = aboutData;
-  const baseDelay = 1.4;
+  const baseDelay = 1.1;
   const increment = 0.6;
 
   const fadeSections = [
@@ -50,7 +51,7 @@ const About = () => {
       type: "publications",
       content: (
         <Box mb={6}>
-          <Text fontWeight={500}>Publications</Text>
+          <span className="bold">Publications</span>
           {publications.map((pub, i) => (
             <Text key={i}>
               <Link color="primary.500" isExternal href={pub.href}>
@@ -64,20 +65,16 @@ const About = () => {
     {
       type: "links",
       content: (
-        <Flex flexDirection="row" justifyContent="flex-start">
+        <Flex flexDirection="row" gap={3}>
           <IconButton
             aria-label="LinkedIn"
             icon={<GrLinkedinOption size={25} />}
             onClick={() => window.open(links.linkedin, "_blank")}
             variant="ghost"
             color="primary.500"
-          />
-          <IconButton
-            aria-label="Email"
-            icon={<GrMailOption size={26} />}
-            onClick={() => (window.location.href = `mailto:${links.email}`)}
-            variant="ghost"
-            color="primary.500"
+            minW="unset"
+            minH="unset"
+            h="auto"
           />
           <IconButton
             aria-label="GitHub"
@@ -85,6 +82,19 @@ const About = () => {
             onClick={() => window.open(links.github, "_blank")}
             variant="ghost"
             color="primary.500"
+            minW="unset"
+            minH="unset"
+            h="auto"
+          />
+          <IconButton
+            aria-label="Email"
+            icon={<IoMailSharp size={29} />}
+            onClick={() => (window.location.href = `mailto:${links.email}`)}
+            variant="ghost"
+            color="primary.500"
+            minW="unset"
+            minH="unset"
+            h="auto"
           />
         </Flex>
       ),

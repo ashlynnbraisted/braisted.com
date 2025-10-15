@@ -256,6 +256,11 @@ const portfolioData = {
     media: [
       {
         type: "image",
+        src: `${process.env.PUBLIC_URL}/portfolio/pmj-demo.png`,
+        alt: "Personal Media Journal Demo",
+      },
+      {
+        type: "image",
         src: `${process.env.PUBLIC_URL}/portfolio/pmj-diagram1.png`,
         alt: "Personal Media Journal Global ER Diagram",
         fit: "contain",
@@ -286,8 +291,8 @@ const portfolioData = {
       },
     ],
     description: [
-      "A customizable app that enhances media consumption by recommending content based on mood, tracking reviews, and supporting personalized user profiles.",
-      "The project involved creating user stories and personas, designing localized ER diagrams for each persona, a global ER diagram, relational diagrams, and a complete database schema, along with a REST API matrix and user story queries to ensure backend functionality supported all features.",
+      "A proof-of-concept media app emphasizing backend architecture and data integration, featuring a minimal UI for demonstrating key functionality such as mood-based recommendations, review tracking, and personalized profiles.",
+      "Deliverables included user stories, personas, ER and relational diagrams, a complete database schema, and a REST API matrix ensuring all features were supported by the backend.",
     ],
   },
   braisted: {
@@ -319,7 +324,7 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/swap-site.jpg`,
+        src: `${process.env.PUBLIC_URL}/portfolio/swap-mockup.png`,
         alt: "Swap Site",
       },
       {

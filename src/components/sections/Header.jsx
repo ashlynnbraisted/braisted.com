@@ -1,5 +1,6 @@
 import { Flex, Image, Tabs, TabList, Tab } from "@chakra-ui/react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { HEADER_HEIGHT } from "../../utils/layout";
 
 // Header component
 const Header = () => {
@@ -23,7 +24,7 @@ const Header = () => {
       top={0}
       zIndex={10}
       bg="white"
-      height="10vh"
+      height={HEADER_HEIGHT}
     >
       <Image
         src={`${process.env.PUBLIC_URL}/logo/logo-ab.svg`}

@@ -8,7 +8,7 @@ const Home = () => {
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      height={"80vh"}
+      flex="1"
     >
       <Typewriter
         text={[
@@ -17,7 +17,6 @@ const Home = () => {
           "This is my website.",
           "Thanks for stopping by!",
         ]}
-        position="relative"
         zIndex={1}
       />
       <ZigZagGame mt={16} />

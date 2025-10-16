@@ -1,7 +1,7 @@
 export { default as ScrollingBanner } from "./ScrollingBanner";
 export { default as BadgeList } from "./BadgeList";
 export { default as ButtonList } from "./ButtonList";
-export { default as ScrollText } from "./ScrollText";
+export { default as ScrollContainer } from "./ScrollContainer";
 export { default as ScrollArea } from "./ScrollArea";
 export { default as PortfolioCard } from "./PortfolioCard";
 export { default as Video } from "./Video";

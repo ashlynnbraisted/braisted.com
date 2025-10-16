@@ -14,6 +14,7 @@ import {
   Typewriter,
 } from "../components";
 import { portfolioData } from "../data";
+import { HEADER_HEIGHT } from "../utils/layout";
 
 const categories = [
   { key: "code", label: "Code" },
@@ -32,13 +33,13 @@ const Portfolio = () => {
           "I made it!",
           "Welcome to my portfolio.",
         ]}
+        top={HEADER_HEIGHT}
         repeating={false}
         position="sticky"
-        top="10vh"
         bg="white"
         width="100%"
         zIndex={10}
-        height="7vh"
+        height="64px"
       />
 
       {/*A set of tabs to sort portfolio work */}
@@ -49,7 +50,7 @@ const Portfolio = () => {
       >
         <TabList
           position="sticky"
-          top="17vh"
+          top={HEADER_HEIGHT + 64}
           bg="white"
           zIndex={10}
           pt={4}

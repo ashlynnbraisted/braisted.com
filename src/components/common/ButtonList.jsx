@@ -1,4 +1,4 @@
-import { HStack, Button, Tooltip } from "@chakra-ui/react";
+import { Flex, Button, Tooltip } from "@chakra-ui/react";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink, FiFigma, FiInfo } from "react-icons/fi";
 
@@ -9,17 +9,17 @@ const buttonTypes = {
   info: { defaultLabel: "Info", icon: FiInfo },
 };
 
+// A list of buttons with optional icons and disabled state
 const ButtonList = ({ buttons = [] }) => {
   if (!buttons.length) return null;
 
   return (
-    <HStack spacing={3}>
+    <Flex wrap="wrap" gap={3}>
       {buttons.map(({ type, href, label, available = true }, i) => {
         const config = buttonTypes[type] || {};
         const Icon = config.icon;
         const displayLabel = label || config.defaultLabel || "Link";
 
-        // When unavailable, render as <button>, not <a>
         const button = available ? (
           <Button
             as="a"
@@ -49,7 +49,7 @@ const ButtonList = ({ buttons = [] }) => {
           </Tooltip>
         );
       })}
-    </HStack>
+    </Flex>
   );
 };
 

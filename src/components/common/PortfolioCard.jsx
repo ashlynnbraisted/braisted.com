@@ -4,7 +4,7 @@ import {
   ButtonList,
   Image,
   ScrollArea,
-  ScrollText,
+  ScrollContainer,
   Video,
 } from "..";
 
@@ -19,23 +19,21 @@ const PortfolioCard = ({
 
   const { title, subtitle, badges, description, media, buttons } = project;
 
-  const mediaElements = media.map((item, i) => {
-    if (item.type === "video") {
-      return <Video key={i} {...item} />;
-    }
-    return <Image key={i} {...item} />;
-  });
+  const renderMedia = (item, i) =>
+    item.type === "video" ? (
+      <Video key={i} {...item} />
+    ) : (
+      <Image key={i} {...item} />
+    );
 
-  // Media section
   const MediaSection = (
-    <ScrollArea width="65%" height="100%" aspectRatio={aspectRatio}>
-      {mediaElements}
+    <ScrollArea w="65%" h="100%" aspectRatio={aspectRatio}>
+      {media.map(renderMedia)}
     </ScrollArea>
   );
 
-  // Text section
   const TextSection = (
-    <Flex maxWidth="30%" flexDirection="column" maxHeight="100%">
+    <Flex maxW="30%" flexDir="column" maxH="100%">
       {title && (
         <Text
           fontSize={40}
@@ -51,8 +49,16 @@ const PortfolioCard = ({
           {subtitle}
         </Text>
       )}
-      {badges && <BadgeList badges={badges} mt={2} />}
-      {description && <ScrollText lines={description} mt={4} mb={6} />}
+      {badges && <BadgeList badges={badges} />}
+      {description && (
+        <ScrollContainer mb={6} mt={2}>
+          {description.map((text, i) => (
+            <Text key={i} fontSize={16} mt={i > 0 ? 4 : 0}>
+              {text}
+            </Text>
+          ))}
+        </ScrollContainer>
+      )}
       {buttons && <ButtonList buttons={buttons} />}
     </Flex>
   );
@@ -69,17 +75,9 @@ const PortfolioCard = ({
       p={6}
       {...props}
     >
-      {reverseLayout ? (
-        <>
-          {TextSection}
-          {MediaSection}
-        </>
-      ) : (
-        <>
-          {MediaSection}
-          {TextSection}
-        </>
-      )}
+      {reverseLayout
+        ? [TextSection, MediaSection]
+        : [MediaSection, TextSection]}
     </Card>
   );
 };

@@ -3,7 +3,7 @@ import {
   BadgeList,
   ButtonList,
   Image,
-  ScrollArea,
+  ScrollCarousel,
   ScrollContainer,
   Video,
 } from "..";
@@ -27,13 +27,13 @@ const PortfolioCard = ({
     );
 
   const MediaSection = (
-    <ScrollArea
+    <ScrollCarousel
       w={{ base: "100%", md: "65%" }}
       h={{ base: "auto", md: "100%" }}
       aspectRatio={aspectRatio}
     >
       {media.map(renderMedia)}
-    </ScrollArea>
+    </ScrollCarousel>
   );
 
   const TextSection = (

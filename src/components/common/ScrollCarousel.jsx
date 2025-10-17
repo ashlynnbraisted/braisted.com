@@ -12,14 +12,14 @@ import { MediaModal } from "..";
 import { useIsMobile } from "../../utils/useIsMobile";
 
 // A scrollable media carousel
-const ScrollArea = ({
+const ScrollCarousel = ({
   children,
   aspectRatio = false,
   previewTitle,
   previewSubtitle,
   ...props
 }) => {
-  const { isMobile } = useIsMobile();
+  const isMobile = useIsMobile();
 
   const items = Array.isArray(children) ? children : [children];
   const containerRef = useRef(null);
@@ -166,4 +166,4 @@ const ScrollArea = ({
   );
 };
 
-export default ScrollArea;
+export default ScrollCarousel;

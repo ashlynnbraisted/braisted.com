@@ -27,16 +27,26 @@ const PortfolioCard = ({
     );
 
   const MediaSection = (
-    <ScrollArea w="65%" h="100%" aspectRatio={aspectRatio}>
+    <ScrollArea
+      w={{ base: "100%", md: "65%" }}
+      h={{ base: "auto", md: "100%" }}
+      aspectRatio={aspectRatio}
+    >
       {media.map(renderMedia)}
     </ScrollArea>
   );
 
   const TextSection = (
-    <Flex maxW="30%" flexDir="column" maxH="100%">
+    <Flex
+      flexDir="column"
+      w={{ base: "100%", md: "30%" }}
+      maxH="100%"
+      alignItems={{ base: "center", md: "flex-start" }}
+      textAlign={{ base: "center", md: "left" }}
+    >
       {title && (
         <Text
-          fontSize={40}
+          fontSize={{ base: 28, md: 40 }}
           fontWeight="medium"
           color="primary.500"
           lineHeight={1.2}
@@ -45,34 +55,44 @@ const PortfolioCard = ({
         </Text>
       )}
       {subtitle && (
-        <Text fontSize={20} mb={2}>
+        <Text fontSize={{ base: 16, md: 20 }} mb={2}>
           {subtitle}
         </Text>
       )}
-      {badges && <BadgeList badges={badges} />}
+      {badges && (
+        <BadgeList
+          badges={badges}
+          justify={{ base: "center", md: "flex-start" }}
+        />
+      )}
       {description && (
-        <ScrollContainer mb={6} mt={2}>
+        <ScrollContainer mb={{ base: 0, md: 6 }} mt={2}>
           {description.map((text, i) => (
-            <Text key={i} fontSize={16} mt={i > 0 ? 4 : 0}>
+            <Text key={i} fontSize={{ base: 14, md: 16 }} mt={i > 0 ? 4 : 0}>
               {text}
             </Text>
           ))}
         </ScrollContainer>
       )}
-      {buttons && <ButtonList buttons={buttons} />}
+      {buttons && (
+        <ButtonList
+          buttons={buttons}
+          justify={{ base: "center", md: "flex-start" }}
+        />
+      )}
     </Flex>
   );
 
   return (
     <Card
       borderRadius={0}
-      flexDirection="row"
+      flexDirection={{ base: "column", md: "row" }}
       alignItems="center"
       justifyContent="space-evenly"
-      height={575}
+      height={{ base: "auto", md: 575 }}
       variant="outline"
-      gap={10}
-      p={6}
+      gap={{ base: 3, md: 10 }}
+      p={{ base: 3, md: 6 }}
       {...props}
     >
       {reverseLayout

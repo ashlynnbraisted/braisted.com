@@ -8,6 +8,8 @@ const aboutData = {
       graduated from Northeastern University with a
       <span className="bold"> BS </span> in
       <span className="bold"> Computer Science and Interaction Design</span>.
+    </>,
+    <>
       During my studies, I completed two 6-month full-time Web Development
       positions, led a mentorship program teaching foundational coding skills to
       middle school girls as president of Girls Who Code, and photographed
@@ -15,8 +17,7 @@ const aboutData = {
     </>,
     <>
       Outside of work, I love to hike, crochet, and play <i>Catan</i>. Take a
-      look around to see some of my work, including this site, which I designed
-      and built from scratch!
+      look around to see some of my work!
     </>,
   ],
   publications: [

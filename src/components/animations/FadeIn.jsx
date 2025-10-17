@@ -9,18 +9,24 @@ const FadeIn = ({
   delay = 0.2,
   rise = true,
   once = true,
+  whileInView = false,
   ...props
-}) => (
-  <MotionBox
-    initial={{ opacity: 0, y: rise ? 20 : 0 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once }}
-    transition={{ duration, delay }}
-    width="100%"
-    {...props}
-  >
-    {children}
-  </MotionBox>
-);
+}) => {
+  const motionProps = {
+    initial: { opacity: 0, y: rise ? 20 : 0 },
+    transition: { duration, delay },
+    width: "100%",
+    ...props,
+  };
+
+  if (whileInView) {
+    motionProps.whileInView = { opacity: 1, y: 0 };
+    motionProps.viewport = { once };
+  } else {
+    motionProps.animate = { opacity: 1, y: 0 };
+  }
+
+  return <MotionBox {...motionProps}>{children}</MotionBox>;
+};
 
 export default FadeIn;

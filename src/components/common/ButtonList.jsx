@@ -14,7 +14,12 @@ const ButtonList = ({ buttons = [] }) => {
   if (!buttons.length) return null;
 
   return (
-    <Flex wrap="wrap" gap={3}>
+    <Flex
+      wrap="wrap"
+      gap={3}
+      justify={{ base: "center", md: "flex-start" }}
+      textAlign={{ base: "center", md: "left" }}
+    >
       {buttons.map(({ type, href, label, available = true }, i) => {
         const config = buttonTypes[type] || {};
         const Icon = config.icon;

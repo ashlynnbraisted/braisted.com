@@ -8,3 +8,4 @@ export { default as Video } from "./Video";
 export { default as Image } from "./Image";
 export { default as MediaModal } from "./MediaModal";
 export { default as CustomCursor } from "./CustomCursor";
+export { default as SocialLinks } from "./SocialLinks";

@@ -7,12 +7,20 @@ import {
 import { Box } from "@chakra-ui/react";
 import { CustomCursor, Header, Footer } from "./components";
 import { Home, Portfolio, Resume, About } from "./pages";
+import { useIsMobile } from "./utils/useIsMobile";
 
 const AppWrapper = () => {
   const location = useLocation();
+  const isMobile = useIsMobile();
 
   return (
-    <Box px={75} minHeight="100vh" display="flex" flexDirection="column">
+    <Box
+      px={{ base: 6, md: 12, lg: 75 }}
+      minHeight="100vh"
+      display="flex"
+      flexDirection="column"
+    >
+      {!isMobile && <CustomCursor />}
       <Header />
       <Box flex="1" display="flex" flexDirection="column">
         <Routes>
@@ -23,7 +31,7 @@ const AppWrapper = () => {
         </Routes>
       </Box>
 
-      {location.pathname !== "/about" && <Footer />}
+      {(location.pathname !== "/about" || isMobile) && <Footer />}
     </Box>
   );
 };
@@ -31,7 +39,6 @@ const AppWrapper = () => {
 function App() {
   return (
     <Router>
-      <CustomCursor />
       <AppWrapper />
     </Router>
   );

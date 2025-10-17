@@ -1,9 +1,8 @@
-import { Box, IconButton, Image, Flex, Link, Text } from "@chakra-ui/react";
-import { Typewriter, FadeIn } from "../components";
-import { GrLinkedinOption, GrGithub } from "react-icons/gr";
-import { IoMailSharp } from "react-icons/io5";
+import { Box, Image, Flex, Link, Text } from "@chakra-ui/react";
+import { Typewriter, FadeIn, ScrollContainer } from "../components";
 import { aboutData } from "../data";
 import { AVAILABLE_HEIGHT_FULL } from "../utils/layout";
+import { SocialLinks } from "../components";
 
 const About = () => {
   const { name, role, intro, publications, links } = aboutData;
@@ -13,15 +12,19 @@ const About = () => {
   const fadeSections = [
     ...intro.map((p) => ({
       type: "paragraph",
-      content: <Text mb={4}>{p}</Text>,
+      content: (
+        <Text fontSize={{ base: 14, md: 16 }} mb={4}>
+          {p}
+        </Text>
+      ),
     })),
     {
       type: "publications",
       content: (
-        <Box mt={2} mb={6}>
+        <Box mt={2} mb={{ base: 2, md: 6 }}>
           <span className="bold">Publications</span>
           {publications.map((pub, i) => (
-            <Text key={i}>
+            <Text fontSize={{ base: 14, md: 16 }} key={i}>
               <Link color="primary.500" isExternal href={pub.href}>
                 {pub.label}
               </Link>
@@ -30,73 +33,59 @@ const About = () => {
         </Box>
       ),
     },
-    {
-      type: "links",
-      content: (
-        <Flex flexDirection="row" gap={3}>
-          <IconButton
-            aria-label="LinkedIn"
-            icon={<GrLinkedinOption size={25} />}
-            onClick={() => window.open(links.linkedin, "_blank")}
-            variant="ghost"
-            color="primary.500"
-            minW="unset"
-            minH="unset"
-            h="auto"
-          />
-          <IconButton
-            aria-label="GitHub"
-            icon={<GrGithub size={26} />}
-            onClick={() => window.open(links.github, "_blank")}
-            variant="ghost"
-            color="primary.500"
-            minW="unset"
-            minH="unset"
-            h="auto"
-          />
-          <IconButton
-            aria-label="Email"
-            icon={<IoMailSharp size={29} />}
-            onClick={() => (window.location.href = `mailto:${links.email}`)}
-            variant="ghost"
-            color="primary.500"
-            minW="unset"
-            minH="unset"
-            h="auto"
-          />
-        </Flex>
-      ),
-    },
   ];
 
   return (
-    <Flex height={AVAILABLE_HEIGHT_FULL} width="100%" gap={2}>
+    <Flex
+      flexDirection={{ base: "column", md: "row" }}
+      maxHeight={{ base: AVAILABLE_HEIGHT_FULL, md: AVAILABLE_HEIGHT_FULL }}
+      width="100%"
+      gap={2}
+      p={{ base: 4, md: 0 }}
+      pt={{ base: 8, md: 0 }}
+    >
       {/* Text Column */}
-      <Flex flexGrow={1} flexDirection="column">
-        <Typewriter text={name} repeating={false} pb={2} />
+      <Flex
+        flexGrow={1}
+        flexDirection="column"
+        height={{ base: "auto", md: AVAILABLE_HEIGHT_FULL }}
+        textAlign={{ base: "left", md: "left" }}
+      >
+        <Typewriter text={name} repeating={false} pb={{ base: 1, md: 2 }} />
         <FadeIn delay={baseDelay}>
-          <Text fontSize={24} mb={6}>
-            <span className="bold">{role}</span>
-          </Text>
+          <Text fontSize={{ base: 18, md: 24 }}>{role}</Text>
         </FadeIn>
 
-        {fadeSections.map((section, index) => (
-          <FadeIn key={index} delay={baseDelay * 2 + index * increment}>
-            {section.content}
-          </FadeIn>
-        ))}
-      </Flex>
+        {/* Scrollable section for text */}
+        <ScrollContainer>
+          {fadeSections.map((section, index) => (
+            <FadeIn key={index} delay={baseDelay * 2 + index * increment}>
+              {section.content}
+            </FadeIn>
+          ))}
+        </ScrollContainer>
 
+        {/* Social links with fade */}
+        <FadeIn delay={baseDelay * 2 + fadeSections.length * increment}>
+          <SocialLinks
+            links={links}
+            justifyContent={"flex-start"}
+            py={{ base: 0, md: 3 }}
+          />
+        </FadeIn>
+      </Flex>
       {/* Image */}
       <Image
-        flexShrink={1}
         src={`${process.env.PUBLIC_URL}/logo/logo-transparent.svg`}
-        right={0}
-        bottom={0}
+        flexShrink={1}
         maxHeight={AVAILABLE_HEIGHT_FULL}
-        maxWidth="80%"
-        marginTop="auto"
+        maxWidth={"80%"}
+        marginTop={"auto"}
+        marginBottom={0}
         objectFit="contain"
+        alignSelf={"flex-end"}
+        position={"sticky"}
+        display={{ base: "none", md: "block" }}
       />
     </Flex>
   );

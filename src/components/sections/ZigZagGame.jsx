@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Box, chakra } from "@chakra-ui/react";
+import { Box, chakra, useBreakpointValue } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { ImRocket } from "react-icons/im";
 import { BsStars } from "react-icons/bs";
@@ -16,10 +16,15 @@ const ZigzagGame = ({ ...props }) => {
 
   const navigate = useNavigate();
 
+  const rocketSize = useBreakpointValue({ base: 30, md: 40 }); // smaller rocket on mobile
+  const starSize = useBreakpointValue({ base: 35, md: 50 });
+  const svgHeight = useBreakpointValue({ base: 50, md: 75 });
+  const pathBaseWidth = useBreakpointValue({ base: 160, md: 200 });
+
   // Generates a random path and sets initial rocket orientation
   useEffect(() => {
-    const width = 200 + Math.random() * 100;
-    const height = 75;
+    const width = pathBaseWidth + Math.random() * 100;
+    const height = svgHeight;
     const segments = Math.floor(3 + Math.random() * 4);
     const segmentWidth = width / segments;
     const startUp = Math.random() > 0.5;
@@ -38,11 +43,8 @@ const ZigzagGame = ({ ...props }) => {
       }
       path += ` L${x},${y}`;
 
-      if (i === 1) {
-        // save the first segment for angle calculation
-        firstSegmentPoint = { x, y };
-      }
-
+      // save the first segment for angle calculation
+      if (i === 1) firstSegmentPoint = { x, y };
       lastPoint = { x, y };
     }
 
@@ -55,7 +57,7 @@ const ZigzagGame = ({ ...props }) => {
     setPathWidth(width);
     setEndPoint(lastPoint);
     setPosition({ x: 0, y: height / 2, angle: initialAngle });
-  }, []);
+  }, [pathBaseWidth, svgHeight]);
 
   // Start dragging (mouse or touch)
   const startDrag = () => setDragging(true);
@@ -116,16 +118,16 @@ const ZigzagGame = ({ ...props }) => {
       onMouseLeave={stopDrag}
       onTouchMove={handleTouchMove}
       onTouchEnd={stopDrag}
-      width={pathWidth + 45 + "px"}
-      height="75px"
+      width={`${pathWidth + rocketSize}px`}
+      height={`${svgHeight}px`}
       position="relative"
       userSelect="none"
       mx="auto"
-      mt={6}
+      mt={{ base: 4, md: 6 }}
       touchAction="none"
       {...props}
     >
-      {/* Zig zag path */}
+      {/* Zigzag path */}
       <chakra.svg
         ref={svgRef}
         width="100%"
@@ -135,19 +137,19 @@ const ZigzagGame = ({ ...props }) => {
         <path d={pathD} strokeWidth="1.5" fill="none" />
       </chakra.svg>
 
-      {/* Rocket icon */}
+      {/* Rocket */}
       <Box
         as={ImRocket}
-        color={"primary.500"}
+        color="primary.500"
         onMouseDown={startDrag}
         onTouchStart={(e) => {
           e.preventDefault();
           startDrag();
         }}
-        fontSize="40px"
+        fontSize={`${rocketSize}px`}
         position="absolute"
-        left={position.x - 20 + "px"}
-        top={position.y - 20 + "px"}
+        left={`${position.x - rocketSize / 2}px`}
+        top={`${position.y - rocketSize / 2}px`}
         zIndex={10}
         transform={`rotate(${position.angle + 45}deg)`}
       />
@@ -155,24 +157,24 @@ const ZigzagGame = ({ ...props }) => {
       {!dragging && !finished && (
         <Box
           position="absolute"
-          left={position.x - 20 + "px"}
-          top={position.y + 25 + "px"}
-          fontSize="12px"
+          left={`${position.x - rocketSize / 2}px`}
+          top={`${position.y + rocketSize / 1.5}px`}
+          fontSize={{ base: "10px", md: "12px" }}
           color="secondary.600"
           fontWeight="medium"
         >
           (Drag me!)
         </Box>
       )}
-      {/* Stars icon */}
+      {/* Stars */}
       {!finished && (
         <Box
           as={BsStars}
-          color={"primary.500"}
+          color="primary.500"
           position="absolute"
-          left={endPoint.x + "px"}
-          top={endPoint.y - 25 + "px"}
-          fontSize="50px"
+          left={`${endPoint.x}px`}
+          top={`${endPoint.y - starSize / 2}px`}
+          fontSize={`${starSize}px`}
           zIndex={5}
         />
       )}

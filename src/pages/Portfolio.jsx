@@ -14,7 +14,7 @@ import {
   Typewriter,
 } from "../components";
 import { portfolioData } from "../data";
-import { HEADER_HEIGHT } from "../utils/layout";
+import { HEADER_HEIGHT_PX } from "../utils/layout";
 
 const categories = [
   { key: "code", label: "Code" },
@@ -33,16 +33,16 @@ const Portfolio = () => {
           "I made it!",
           "Welcome to my portfolio.",
         ]}
-        top={HEADER_HEIGHT}
+        top={HEADER_HEIGHT_PX}
         repeating={false}
         position="sticky"
         bg="white"
         width="100%"
         zIndex={10}
-        height="64px"
+        height={{ base: "40px", md: "64px" }}
       />
 
-      {/*A set of tabs to sort portfolio work */}
+      {/* Tabs */}
       <Tabs
         variant="unstyled"
         size="lg"
@@ -50,16 +50,19 @@ const Portfolio = () => {
       >
         <TabList
           position="sticky"
-          top={HEADER_HEIGHT + 64}
+          top={{
+            base: `calc(${HEADER_HEIGHT_PX.base} + 40px)`,
+            md: `calc(${HEADER_HEIGHT_PX.md} + 64px)`,
+          }}
           bg="white"
           zIndex={10}
-          pt={4}
+          pt={{ base: 1, md: 4 }}
           pb={3}
-          pl={2}
-          gap={8}
+          pl={{ base: 0, md: 2 }}
+          gap={{ base: 4, md: 8 }}
         >
           {categories.map((cat) => (
-            <Tab key={cat.key} p={0} fontSize="22px">
+            <Tab key={cat.key} p={0} fontSize={{ base: "16px", md: "22px" }}>
               {cat.label}
             </Tab>
           ))}
@@ -67,7 +70,7 @@ const Portfolio = () => {
 
         <TabPanels>
           {categories.map((cat) => (
-            <TabPanel key={cat.key}>
+            <TabPanel key={cat.key} p={{ base: 0, md: 4 }}>
               <VStack spacing={6} mb={5}>
                 {cat.key === "photography" ? (
                   <ConcertPhotos />
@@ -75,7 +78,11 @@ const Portfolio = () => {
                   Object.values(portfolioData)
                     .filter((p) => p.category === cat.key)
                     .map((project, i) => (
-                      <FadeIn key={i} width="90%">
+                      <FadeIn
+                        key={i}
+                        width={{ base: "100%", md: "90%" }}
+                        whileInView={true}
+                      >
                         <PortfolioCard key={i} project={project} />
                       </FadeIn>
                     ))

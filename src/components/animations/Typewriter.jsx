@@ -109,7 +109,12 @@ const Typewriter = ({
 
   return (
     <Box {...props}>
-      <Text fontSize={64} fontWeight={500} color="primary.500" lineHeight="1">
+      <Text
+        fontSize={{ base: 28, md: 48, lg: 64 }}
+        fontWeight={500}
+        color="primary.500"
+        lineHeight="1"
+      >
         <span>{displayedText}</span>
         {cursorVisible && (
           <Text

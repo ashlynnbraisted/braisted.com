@@ -11,6 +11,7 @@ const Resume = () => {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
+        minH={AVAILABLE_HEIGHT}
       >
         <Image
           src={`${process.env.PUBLIC_URL}/resume.svg`}

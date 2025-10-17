@@ -23,6 +23,7 @@ const theme = extendTheme({
       },
       "html, body": {
         overscrollBehaviorY: "none",
+        bg: "white",
       },
       "input, textarea, button, a, p, span, div": {
         cursor: "none !important",

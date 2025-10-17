@@ -1,63 +1,58 @@
 import { useState } from "react";
-import { Box, Flex, IconButton, Text, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Text } from "@chakra-ui/react";
 import { BsShuffle } from "react-icons/bs";
 import { concertList } from "../../data";
 import { FadeIn, Image, MediaModal } from "..";
 
 // A display of photos from public/concerts
 const ConcertPhotos = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [photos, setPhotos] = useState(shuffleArray(concertList || []));
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Opens a modal when a photo is clicked
-  const handleClick = (photo) => {
-    setSelectedPhoto(photo);
-    onOpen();
-  };
-  // Shuffles image array
-  const shuffleArray = (arr) => {
+  function shuffleArray(arr) {
     const shuffled = [...arr];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;
-  };
+  }
 
-  const [photos, setPhotos] = useState(
-    Array.isArray(concertList) ? shuffleArray(concertList) : []
-  );
-
-  // Shuffle on button click
-  const handleShuffle = () => {
-    setPhotos((prev) => shuffleArray(prev));
+  const handleShuffle = () => setPhotos((prev) => shuffleArray(prev));
+  const handleClick = (photo) => {
+    setSelectedPhoto(photo);
+    setIsOpen(true);
   };
+  const handleClose = () => setIsOpen(false);
 
   return (
     <>
-      <Flex>
+      <Flex flexDirection={{ base: "column", md: "row" }}>
         {/* Shuffle Button */}
-        <Flex width="10%" alignItems="flex-start">
+        <Flex
+          justifyContent={{ base: "center", md: "flex-start" }}
+          width={{ base: "100%", md: "10%" }}
+          mb={{ base: 3, md: 0 }}
+        >
           <IconButton
             icon={<BsShuffle size={30} />}
             aria-label="Shuffle Photos"
             onClick={handleShuffle}
             variant="ghost"
             color="primary.500"
-            position="fixed"
-          ></IconButton>
+            position={{ base: "static", md: "fixed" }}
+          />
         </Flex>
 
         {/* Photo Grid */}
-        <div
-          style={{
-            columnCount: 4,
-            columnGap: "1rem",
-            maxWidth: "90%",
-            margin: "0 auto",
+        <Box
+          maxWidth={{ base: "100%", md: "90%" }}
+          sx={{
+            columnCount: { base: 1, md: 4 },
           }}
         >
-          <FadeIn>
+          <FadeIn whileInView={true}>
             {photos.map((p, i) => (
               <Box
                 key={i}
@@ -105,7 +100,7 @@ const ConcertPhotos = () => {
               </Box>
             ))}
           </FadeIn>
-        </div>
+        </Box>
 
         <Box width="10%"></Box>
       </Flex>
@@ -113,7 +108,7 @@ const ConcertPhotos = () => {
       {/* Modal for clicked image */}
       <MediaModal
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={handleClose}
         src={selectedPhoto?.src}
         title={selectedPhoto?.artist}
         subtitle={selectedPhoto?.venue}

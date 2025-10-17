@@ -9,6 +9,7 @@ import {
 import { useRef, useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { MediaModal } from "..";
+import { useIsMobile } from "../../utils/useIsMobile";
 
 // A scrollable media carousel
 const ScrollArea = ({
@@ -18,6 +19,8 @@ const ScrollArea = ({
   previewSubtitle,
   ...props
 }) => {
+  const { isMobile } = useIsMobile();
+
   const items = Array.isArray(children) ? children : [children];
   const containerRef = useRef(null);
   const [page, setPage] = useState(0);
@@ -65,15 +68,17 @@ const ScrollArea = ({
       <Box {...props}>
         <Flex alignItems="center">
           {/* Left arrow */}
-          <Button
-            aria-label="Scroll left"
-            onClick={() => scrollByPage(-1)}
-            variant="ghost"
-            color="secondary.400"
-            visibility={page > 0 ? "visible" : "hidden"}
-          >
-            <FaChevronLeft size={20} />
-          </Button>
+          {!isMobile && (
+            <Button
+              aria-label="Scroll left"
+              onClick={() => scrollByPage(-1)}
+              variant="ghost"
+              color="secondary.400"
+              visibility={page > 0 ? "visible" : "hidden"}
+            >
+              <FaChevronLeft size={20} />
+            </Button>
+          )}
 
           {/* Media display */}
           <Flex
@@ -117,25 +122,31 @@ const ScrollArea = ({
           </Flex>
 
           {/* Right arrow */}
-          <Button
-            aria-label="Scroll right"
-            onClick={() => scrollByPage(1)}
-            variant="ghost"
-            color="secondary.400"
-            visibility={page < items.length - 1 ? "visible" : "hidden"}
-          >
-            <FaChevronRight size={20} />
-          </Button>
+          {!isMobile && (
+            <Button
+              aria-label="Scroll right"
+              onClick={() => scrollByPage(1)}
+              variant="ghost"
+              color="secondary.400"
+              visibility={page < items.length - 1 ? "visible" : "hidden"}
+            >
+              <FaChevronRight size={20} />
+            </Button>
+          )}
         </Flex>
 
         {/* Dots below media */}
         {items.length > 1 && (
-          <HStack justify="center" pt={6} pb={3}>
+          <HStack
+            justify="center"
+            pt={{ base: 3, md: 6 }}
+            pb={{ base: 1, md: 3 }}
+          >
             {items.map((_, i) => (
               <Box
                 key={i}
-                w={2}
-                h={2}
+                w={{ base: 1.5, md: 2 }}
+                h={{ base: 1.5, md: 2 }}
                 bg={i === page ? "primary.500" : "secondary.400"}
               />
             ))}

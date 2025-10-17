@@ -9,6 +9,11 @@ import { CustomCursor, Header, Footer } from "./components";
 import { Home, Portfolio, Resume, About } from "./pages";
 import { useIsMobile } from "./utils/useIsMobile";
 
+const redirectPath = window.location.search.slice(1);
+if (redirectPath) {
+  window.history.replaceState(null, "", "/" + redirectPath);
+}
+
 const AppWrapper = () => {
   const location = useLocation();
   const isMobile = useIsMobile();

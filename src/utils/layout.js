@@ -14,12 +14,12 @@ export const FOOTER_HEIGHT_PX = {
 
 // Full page minus header only
 export const AVAILABLE_HEIGHT_FULL = {
-  base: `calc(100vh - ${HEADER_HEIGHT_PX.base})`,
-  md: `calc(100vh - ${HEADER_HEIGHT_PX.md})`,
+  base: `calc(100dvh - ${HEADER_HEIGHT_PX.base})`,
+  md: `calc(100dvh - ${HEADER_HEIGHT_PX.md})`,
 };
 
 // Page minus header + footer
 export const AVAILABLE_HEIGHT = {
-  base: `calc(100vh - ${HEADER_HEIGHT_PX.base} - ${FOOTER_HEIGHT_PX.base})`,
-  md: `calc(100vh - ${HEADER_HEIGHT_PX.md} - ${FOOTER_HEIGHT_PX.md})`,
+  base: `calc(100dvh - ${HEADER_HEIGHT_PX.base} - ${FOOTER_HEIGHT_PX.base})`,
+  md: `calc(100dvh - ${HEADER_HEIGHT_PX.md} - ${FOOTER_HEIGHT_PX.md})`,
 };

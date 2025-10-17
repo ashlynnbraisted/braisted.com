@@ -116,22 +116,24 @@ const Header = () => {
                 textAlign="center"
                 py={8}
               >
-                <Flex direction="column" align="center" gap={6}>
-                  {links.map((link, i) => (
-                    <FadeIn key={link.path} delay={(i + 1) * 0.2}>
-                      <Text fontSize={24} color="primary.500">
-                        <Link
-                          onClick={() => {
-                            navigate(link.path);
-                            setIsOpen(false);
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                          }}
-                        >
-                          {link.name}
-                        </Link>
-                      </Text>
-                    </FadeIn>
-                  ))}
+                <Flex flex="1" align="center" justify="center">
+                  <Flex direction="column" align="center" gap={6}>
+                    {links.map((link, i) => (
+                      <FadeIn key={link.path} delay={(i + 1) * 0.2}>
+                        <Text fontSize={24} color="primary.500">
+                          <Link
+                            onClick={() => {
+                              navigate(link.path);
+                              setIsOpen(false);
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }}
+                          >
+                            {link.name}
+                          </Link>
+                        </Text>
+                      </FadeIn>
+                    ))}
+                  </Flex>
                 </Flex>
 
                 <SocialLinks justifyContent="center" gap={6} />

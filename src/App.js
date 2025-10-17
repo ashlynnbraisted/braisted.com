@@ -16,7 +16,7 @@ const AppWrapper = () => {
   return (
     <Box
       px={{ base: 6, md: 12, lg: 75 }}
-      minHeight="100vh"
+      minHeight="100dvh"
       display="flex"
       flexDirection="column"
     >

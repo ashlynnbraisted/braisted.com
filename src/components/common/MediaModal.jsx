@@ -39,14 +39,14 @@ const MediaModal = ({ isOpen, onClose, src, title, subtitle }) => {
           flexDirection="column"
           alignItems="center"
           maxWidth="90vw"
-          maxHeight="90vh"
+          maxHeight="90dvh"
         >
           {isVideo ? (
             <Video
               src={src}
               alt={title || "Media preview"}
               style={{
-                maxHeight: "70vh",
+                maxHeight: "70dvh",
                 maxWidth: "70vw",
                 borderRadius: 0,
                 display: "block",
@@ -57,7 +57,7 @@ const MediaModal = ({ isOpen, onClose, src, title, subtitle }) => {
             <Image
               src={src}
               alt={title || "Media preview"}
-              maxHeight="70vh"
+              maxHeight="70dvh"
               maxWidth="70vw"
               objectFit="contain"
               borderRadius={0}

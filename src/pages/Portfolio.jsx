@@ -40,6 +40,7 @@ const Portfolio = () => {
         width="100%"
         zIndex={10}
         height={{ base: "40px", md: "64px" }}
+        py={{ base: 8, md: 0 }}
       />
 
       {/* Tabs */}
@@ -51,7 +52,7 @@ const Portfolio = () => {
         <TabList
           position="sticky"
           top={{
-            base: `calc(${HEADER_HEIGHT_PX.base} + 40px)`,
+            base: `calc(${HEADER_HEIGHT_PX.base} + 64px)`,
             md: `calc(${HEADER_HEIGHT_PX.md} + 64px)`,
           }}
           bg="white"
@@ -70,7 +71,11 @@ const Portfolio = () => {
 
         <TabPanels>
           {categories.map((cat) => (
-            <TabPanel key={cat.key} p={{ base: 0, md: 4 }}>
+            <TabPanel
+              key={cat.key}
+              py={{ base: 2, md: 4 }}
+              px={{ base: 0, md: 4 }}
+            >
               <VStack spacing={6} mb={5}>
                 {cat.key === "photography" ? (
                   <ConcertPhotos />

@@ -341,7 +341,7 @@ const portfolioData = {
     buttons: [
       {
         type: "figma",
-        href: "https://www.figma.com/design/t9yJfdGes4qnykWObiqJpa/Swap-Capstone?node-id=293-751",
+        href: "https://www.figma.com/proto/t9yJfdGes4qnykWObiqJpa/Swap-Capstone?node-id=293-751&t=pucFbrA6L8O9qUO5-1",
       },
     ],
     description: [

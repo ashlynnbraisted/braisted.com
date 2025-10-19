@@ -87,8 +87,8 @@ const theme = extendTheme({
           borderColor: "primary.500",
           color: "primary.500",
           _disabled: {
-            color: "secondary.500",
-            borderColor: "secondary.500",
+            color: "secondary.700",
+            borderColor: "secondary.700",
             cursor: "not-allowed",
             _hover: { transform: "none" },
           },

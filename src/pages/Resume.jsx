@@ -14,7 +14,7 @@ const Resume = () => {
         minH={AVAILABLE_HEIGHT}
       >
         <Image
-          src={`${process.env.PUBLIC_URL}/resume.svg`}
+          src={`${process.env.PUBLIC_URL}/resume-ab.svg`}
           alt="Resume"
           maxH={AVAILABLE_HEIGHT}
           maxW="100%"

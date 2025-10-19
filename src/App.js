@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,8 +7,11 @@ import {
 } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
 import { CustomCursor, Header, Footer } from "./components";
-import { Home, Portfolio, Resume, About } from "./pages";
 import { useIsMobile } from "./utils/useIsMobile";
+import Home from "./pages/Home";
+const Portfolio = React.lazy(() => import("./pages/Portfolio"));
+const About = React.lazy(() => import("./pages/About"));
+const Resume = React.lazy(() => import("./pages/Resume"));
 
 const redirectPath = window.location.search.slice(1);
 if (redirectPath) {
@@ -28,12 +32,14 @@ const AppWrapper = () => {
       {!isMobile && <CustomCursor />}
       <Header />
       <Box flex="1" display="flex" flexDirection="column">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Suspense>
       </Box>
 
       {(location.pathname !== "/about" || isMobile) && <Footer />}

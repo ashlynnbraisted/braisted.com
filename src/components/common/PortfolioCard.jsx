@@ -19,11 +19,11 @@ const PortfolioCard = ({
 
   const { title, subtitle, badges, description, media, buttons } = project;
 
-  const renderMedia = (item, i) =>
+  const renderMedia = (item) =>
     item.type === "video" ? (
-      <Video key={i} {...item} />
+      <Video key={item.title} {...item} />
     ) : (
-      <Image key={i} {...item} />
+      <Image key={item.alt} {...item} />
     );
 
   const MediaSection = (
@@ -31,6 +31,7 @@ const PortfolioCard = ({
       w={{ base: "100%", md: "65%" }}
       h={{ base: "auto", md: "100%" }}
       aspectRatio={aspectRatio}
+      key={`${title}-media`}
     >
       {media.map(renderMedia)}
     </ScrollCarousel>
@@ -43,6 +44,7 @@ const PortfolioCard = ({
       maxH="100%"
       alignItems={{ base: "center", md: "flex-start" }}
       textAlign={{ base: "center", md: "left" }}
+      key={`${title}-text`}
     >
       {title && (
         <Text

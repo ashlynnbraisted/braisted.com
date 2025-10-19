@@ -16,12 +16,13 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/priceline-components.svg`,
+        src: `${process.env.PUBLIC_URL}/portfolio/priceline-components.webp`,
         alt: "Priceline Components",
+        loading: "eager",
       },
       {
         type: "video",
-        src: `${process.env.PUBLIC_URL}/portfolio/priceline-demo.mov`,
+        src: `${process.env.PUBLIC_URL}/portfolio/priceline-demo.mp4`,
         title: "Priceline Demo",
         fit: "cover",
       },
@@ -50,7 +51,7 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/kanbas.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/kanbas.webp`,
         alt: "Kanbas Logo",
       },
       {
@@ -60,7 +61,7 @@ const portfolioData = {
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/kanbas-quiz.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/kanbas-quiz.webp`,
         alt: "Kanbas Quiz",
       },
     ],
@@ -68,6 +69,7 @@ const portfolioData = {
       {
         type: "live",
         href: "https://cheerful-parfait-c509f6.netlify.app/#/Kanbas/Dashboard",
+        available: false,
       },
       {
         type: "code",
@@ -104,7 +106,7 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/covey.jpg`,
+        src: `${process.env.PUBLIC_URL}/portfolio/covey-logo.webp`,
         alt: "Covey.Photo logo",
         fit: "contain",
       },
@@ -116,19 +118,19 @@ const portfolioData = {
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/covey-booth.svg`,
+        src: `${process.env.PUBLIC_URL}/portfolio/covey-booth.webp`,
         alt: "Covey Photo Studio",
         fit: "contain",
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/covey-wall.svg`,
+        src: `${process.env.PUBLIC_URL}/portfolio/covey-wall.webp`,
         alt: "Covey Photo Wall",
         fit: "contain",
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/covey.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/covey.webp`,
         alt: "Covey Photo Example",
         fit: "contain",
       },
@@ -151,17 +153,17 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/ip-bird.jpg`,
+        src: `${process.env.PUBLIC_URL}/portfolio/ip-bird.webp`,
         alt: "Birds from Image Processor",
       },
       {
         type: "video",
-        src: `${process.env.PUBLIC_URL}/portfolio/ip-demo.mov`,
+        src: `${process.env.PUBLIC_URL}/portfolio/ip-demo.mp4`,
         title: "Image Processor Demo",
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/ip-diagram.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/ip-diagram.webp`,
         alt: "Image Processor Diagram",
       },
     ],
@@ -185,12 +187,12 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/cc-mockup.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/cc-mockup.webp`,
         alt: "Cacophony Crossing Homepage",
       },
       {
         type: "video",
-        src: `${process.env.PUBLIC_URL}/portfolio/cc-demo2.mov`,
+        src: `${process.env.PUBLIC_URL}/portfolio/cc-demo.mp4`,
         title: "Cacophony Crossing Demo",
       },
     ],
@@ -214,17 +216,17 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/ribbles.jpg`,
+        src: `${process.env.PUBLIC_URL}/portfolio/ribbles.webp`,
         alt: "Ribbles Installation",
       },
       {
         type: "video",
-        src: `${process.env.PUBLIC_URL}/portfolio/ribbles-2.mov`,
+        src: `${process.env.PUBLIC_URL}/portfolio/ribbles-2.mp4`,
         title: "Ribbles Demo",
       },
       {
         type: "video",
-        src: `${process.env.PUBLIC_URL}/portfolio/ribbles.mov`,
+        src: `${process.env.PUBLIC_URL}/portfolio/ribbles.mp4`,
         title: "Ribbles Demo",
       },
     ],
@@ -256,24 +258,24 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/pmj-demo.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/pmj-demo.webp`,
         alt: "Personal Media Journal Demo",
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/pmj-diagram1.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/pmj-diagram1.webp`,
         alt: "Personal Media Journal Global ER Diagram",
         fit: "contain",
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/pmj-diagram2.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/pmj-diagram2.webp`,
         alt: "Personal Media Journal Schema Diagram",
         fit: "contain",
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/pmj-diagram3.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/pmj-diagram3.webp`,
         alt: "Personal Media Journal Relational Diagram",
         fit: "contain",
       },
@@ -324,17 +326,17 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/swap-mockup.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/swap-mockup.webp`,
         alt: "Swap Site",
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/swap-component.svg`,
+        src: `${process.env.PUBLIC_URL}/portfolio/swap-component.webp`,
         alt: "Swap Component Library",
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/swap-ads.jpg`,
+        src: `${process.env.PUBLIC_URL}/portfolio/swap-ads.webp`,
         alt: "Swap Ads",
       },
     ],
@@ -357,7 +359,7 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/cookbook-mockup.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/cookbook-mockup.webp`,
         alt: "CookBook",
       },
     ],
@@ -380,17 +382,17 @@ const portfolioData = {
     media: [
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/RSI-landing.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/RSI-landing.webp`,
         alt: "RSI Landing Page",
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/RSI-original.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/RSI-original.webp`,
         alt: "RSI Original Site",
       },
       {
         type: "image",
-        src: `${process.env.PUBLIC_URL}/portfolio/RSI-brochure.png`,
+        src: `${process.env.PUBLIC_URL}/portfolio/RSI-brochure.webp`,
         alt: "RSI Brochure",
       },
     ],

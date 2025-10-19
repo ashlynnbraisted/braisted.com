@@ -1,7 +1,7 @@
 import { Image as ChakraImage } from "@chakra-ui/react";
 
 // Image with set props
-const Image = ({ src, alt, fit = "cover", ...props }) => (
+const Image = ({ src, alt, fit = "cover", loading = "lazy", ...props }) => (
   <ChakraImage
     src={src}
     alt={alt}
@@ -10,6 +10,7 @@ const Image = ({ src, alt, fit = "cover", ...props }) => (
     minW={fit === "cover" ? "100%" : "auto"}
     minH={fit === "cover" ? "100%" : "auto"}
     objectFit={fit}
+    loading={loading}
     {...props}
   />
 );

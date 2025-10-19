@@ -124,7 +124,7 @@ const ZigzagGame = ({ ...props }) => {
       userSelect="none"
       mx="auto"
       mt={{ base: 4, md: 6 }}
-      touchAction="none"
+      touchaction="none"
       {...props}
     >
       {/* Zigzag path */}

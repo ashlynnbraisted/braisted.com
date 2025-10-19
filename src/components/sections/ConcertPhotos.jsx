@@ -60,7 +60,6 @@ const ConcertPhotos = () => {
                 display="inline-block"
                 width="100%"
                 margin="0 0 1rem"
-                breakInside="avoid"
                 position="relative"
                 overflow="hidden"
                 onClick={() => handleClick(p)}

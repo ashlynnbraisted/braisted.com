@@ -20,6 +20,7 @@ const MediaModal = ({ isOpen, onClose, src, title, subtitle }) => {
       isOpen={isOpen}
       onClose={onClose}
       isCentered
+      returnFocusOnClose={false}
       portal={false}
       closeOnOverlayClick
     >

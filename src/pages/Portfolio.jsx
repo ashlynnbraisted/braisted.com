@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Box,
   Tab,
@@ -13,7 +14,7 @@ import {
   PortfolioCard,
   Typewriter,
 } from "../components";
-import { portfolioData } from "../data";
+import { portfolioData, concertList } from "../data";
 import { HEADER_HEIGHT_PX } from "../utils/layout";
 
 const categories = [
@@ -24,6 +25,25 @@ const categories = [
 
 // The "Portfolio" tab
 const Portfolio = () => {
+  // Preload concert images when Portfolio mounts
+  useEffect(() => {
+    const preloadImages = async () => {
+      const batchSize = 10;
+      const delay = 150;
+
+      for (let i = 0; i < concertList.length; i += batchSize) {
+        const batch = concertList.slice(i, i + batchSize);
+        batch.forEach((item) => {
+          const img = new Image();
+          img.src = item.src;
+        });
+        await new Promise((r) => setTimeout(r, delay));
+      }
+    };
+
+    preloadImages();
+  }, []);
+
   return (
     <Box>
       <Typewriter

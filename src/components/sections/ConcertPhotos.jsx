@@ -52,8 +52,8 @@ const ConcertPhotos = () => {
             columnCount: { base: 1, md: 4 },
           }}
         >
-          <FadeIn whileInView={true}>
-            {photos.map((p, i) => (
+          {photos.map((p, i) => (
+            <FadeIn whileInView={true}>
               <Box
                 key={i}
                 as="figure"
@@ -97,8 +97,8 @@ const ConcertPhotos = () => {
                   )}
                 </Box>
               </Box>
-            ))}
-          </FadeIn>
+            </FadeIn>
+          ))}
         </Box>
 
         <Box width="10%"></Box>
